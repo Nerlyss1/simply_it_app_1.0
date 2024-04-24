@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Simply-IT</title>        
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/index">Simply'IT</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/index">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/cours">Nos Cours</a></li>
+                        <% if (user && user.id) { %>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/profile">Profil</a></li>
+                        <% } else { %>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/connexion">Connexion | Inscription</a></li>
+                        <% } %>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">A Propos</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+ <!-- Page Header-->
+ <header class="masthead" style="background-image: url('/assets/img/purple-yeti-cartoon-sitting-chair.jpg')">
+    <div class="container position-relative px-4 px-lg-5 ">
+        <div class="row gx-4 gx-lg-5 ">
+            <div class="col-md-10 col-lg-8 col-xl-7 ">
+                <div class="site-heading " >
+                    <h1 class="post-title mb-4"><%= cours.titre_cours %></h1>
+                    <span class="subheading"><%= cours.sous_titre_cours %></span>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="container mt-5">
+                    <div class="row">
+                        <!-- Course Content Area-->
+                        <div class="col-lg-8">
+                            <div class="card mb-4 rounded-3">
+                                <div class="card-body markdown-content">
+                                    <%- descriptionHtml %>                                    
+                                </div>
+                                <!-- Bouton Like -->
+                                <div class="d-flex justify-content-end align-items-center m-4">
+                                    <!-- Bouton J'aime et nombre de likes -->
+                                    <div class="me-4"> <!-- Ajout d'une marge à droite pour plus d'espace -->
+                                        <button type="button" class="btn btn-danger btn-sm rounded"><i class="fas fa-heart"></i> J'aime cet article !</button>
+                                        <span style="font-size: 0.85em; color: red; margin-left: 10px;"><%= nombreLikes %> personnes aiment.</span>
+                                    </div>
+
+                                    <!-- Lien vers le prochain cours -->
+                                    <% if (nextCourseId) { %>
+                                        <a href="/cours/<%= nextCourseId %>" class="btn btn-primary btn-sm rounded">Page suivante</a>
+                                    <% } %>
+                                </div>                            
+                            </div>
+                        </div>
+                        <!-- Side widgets-->
+                        <div class="col-lg-4">
+                            <!-- Categories widget-->
+                            <div class="card mb-4 rounded-3">
+                                <div class="card-header">
+                                    <h3 style="color: #6a5acd;">Nos derniers articles</h3></div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        
+                                            <div class="card-body">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                                                        <span style="color: #FFD700;">&#9733; </span>
+                                                        <a style="color: #6a5acd;" href="/cours/2">Guide d'utilisation de Git</a>
+                                                    </li>
+                                                    <li style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                                                        <span style="color: #FFD700;">&#9733; </span>
+                                                        <a style="color: #6a5acd;" href="/cours/3">Débuter sur Linux</a>
+                                                    </li>
+                                                    <li style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                                                        <span style="color: #FFD700;">&#9733; </span>
+                                                        <a style="color: #6a5acd;" href="/cours/4">Maîtrisez les Commandes Linux</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        
+                                    </div>
+                                </div>
+                                <% if (!user) { %>
+                                    <!-- Side widget-->
+                                    <div class="card mb-4 rounded-3">
+                                        <div class="card-header">
+                                            <h3 style="color: #6a5acd;">Rejoins-nous !</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            Pour pouvoir commenter et bientôt participer à notre forum !
+                                            <a href="/connexion" class="btn btn-primary rounded mt-3">Connexion</a>
+                                        </div>
+                                    </div>
+                                <% } %>
+                            <!-- <div class="card mb-4 rounded-3">
+                                <div class="card-header">
+                                    <h3 style="color: #6a5acd;">Side Widget</h3>
+                                </div>
+                                <div class="card-body">Dernière Actualité intérressante : </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Commentaires -->
+               <!-- Section Commentaires -->
+               <div class="card mt-4 rounded">
+                <div class="card-header ">
+                    <h4 style="color: #6a5acd;">Commentaires</h4>
+                </div>
+                <div class="card-body">
+                    <% commentaires.forEach(function(commentaire) { %>
+                        <div class="p-3 mb-3 bg-light rounded border ">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h6 class="mt-0">
+                                        <%= commentaire.nom_utilisateur %> 
+                                        <small class="text-muted">
+                                            - <%= new Date(commentaire.date_commentaire).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                                        </small>
+                                    </h6>
+                                    <p><%= commentaire.contenu %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                    <!-- Champ de saisie pour le commentaire -->
+                    <% if (user) { %>
+                        <form action="/ajouter-commentaire" method="POST">
+                            <div class="form-group">
+                                Ajouter un commentaire :
+                              <textarea class="form-control rounded mt-3" id="comment" name="texte" rows="3" required></textarea>
+                            </div>
+                            <input type="hidden" name="cours_id" value="<%= cours.id_cours %>">
+                            <button type="submit" class="btn btn-primary mt-3 rounded">Envoyer</button>
+                          </form>
+                    <% } else { %>
+                        <p class="mt-4">Tu veux donner ton avis ? <a href="/connexion" class="text-primary">Connecte-toi</a> et dis-nous tout !</p>
+                    <% } %>
+                </div>
+            </div>
+            
+         
+        </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Simply'IT 2024</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script>hljs.highlightAll();</script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

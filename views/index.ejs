@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Simply-IT</title>
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../views/index.html">Simply'IT</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/index">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/cours">Nos Cours</a></li>
+                        <% if (user && user.id) { %>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/profile">Profil</a></li>
+                        <% } else { %>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/connexion">Connexion | Inscription</a></li>
+                        <% } %>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">A Propos</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('/assets/img/header.jpg')">
+            <div class="container position-relative px-4 px-lg-5 ">
+                <div class="row gx-4 gx-lg-5 ">
+                    <div class="col-md-10 col-lg-8 col-xl-7 ">
+                        <div class="site-heading " >
+                            <h1 class="post-title ">L'apprentissage de l'informatique à porté de main</h1>
+                            <span class="subheading">Améliorer vos compétences de manière simple et ludique avec nos cours dans le domaine du réseau et infrastructure.</span>
+                            <a href="/cours" class="btn btn-primary  mt-3 rounded-3">Je découvre les cours !</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+            <!-- Services-->
+            <section class="page-section" id="services">
+                <div class="container">
+                    <div class="text-center">
+                        <h2 class="section-heading">Nos Valeurs</h2>
+                        <h3 class="section-subheading text-muted"> - </h3>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-4" >
+                            <span class="fa-stack fa-3x" >
+                                <i class="fas fa-circle fa-stack-2x text-primary" ></i>
+                                <i class="fas fa-lightbulb fa-stack-1x fa-inverse" ></i>
+                            </span>
+                            <h4 class="my-3" >Innovation</h4>
+                            <p class="text-muted">Découverte des dernières tendances technologiques : mettre à jour nos connaissances ! </p>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-cheetah fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="my-3">Agilité</h4>
+                            <p class="text-muted">Apprendre à analyser, résoudre et réduire les perte en cas de crise.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-users fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="my-3">Communauté</h4>
+                            <p class="text-muted">Rejoignez notre famille de geeks, où les câbles se connectent et les idées fusent !</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Devops Plan-->
+            <section class="page-section" id="devops-plan">
+                <div class="container">
+                    <div class="text-center">
+                        <h2 class="section-heading  mb-3">DevOps Process</h2>
+                        <h3 class="section-subheading text-muted mb-3" style="font-weight: normal;">Un aperçu de notre pipeline de développement et d'opérations</h3>
+                    </div>
+                    <div class="row align-items-center"> <!-- Centrage vertical des éléments -->
+                        <div class="col-md-6">
+                            <!-- Image centrée verticalement et avec contrôle de taille -->
+                            <img src="/assets/img/secure_server.png" class="img-fluid" alt="Image descriptive" style="max-height: 450px; width: 100%;">
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Accordions avec arrondis pour chaque élément -->
+                            <div class="accordion" id="processAccordion">
+                                <!-- Accordion item pour 'Plan' -->
+                                <div class="accordion-item shadow mb-3 rounded-3">
+                                    <h2 class="accordion-header" id="headingPlan">
+                                        <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePlan" aria-expanded="true" aria-controls="collapsePlan">
+                                            <i class="fas fa-map-marked-alt pe-2"></i> <!-- Icône FontAwesome pour 'Plan' -->
+                                            <h4 class="my-3 d-inline">Plan</h4> <!-- Titre intégré dans le bouton -->
+                                        </button>
+                                    </h2>
+                                    <div id="collapsePlan" class="accordion-collapse collapse show rounded-3" aria-labelledby="headingPlan" data-bs-parent="#processAccordion">
+                                        <div class="accordion-body rounded-5">
+                                            Organisation et configuration de vos tâches et infrastructures (Ex: IaaS, Ansible ...).
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Accordion item pour 'Code' -->
+                                <div class="accordion-item shadow mb-3 rounded-3">
+                                    <h2 class="accordion-header" id="headingCode">
+                                        <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCode" aria-expanded="false" aria-controls="collapseCode">
+                                            <i class="fas fa-code pe-2"></i> <!-- Icône FontAwesome pour 'Code' -->
+                                            <h4 class="my-3 d-inline">Code</h4>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseCode" class="accordion-collapse collapse" aria-labelledby="headingCode" data-bs-parent="#processAccordion">
+                                        <div class="accordion-body rounded-5">
+                                            Développement, révision et merge de code sur des outils de collaboration (Ex: GitHub, GitLab).
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Accordion item pour 'Build' -->
+                                <div class="accordion-item shadow mb-3 rounded-3">
+                                    <h2 class="accordion-header" id="headingBuild">
+                                        <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBuild" aria-expanded="false" aria-controls="collapseBuild">
+                                            <i class="fas fa-tools pe-2"></i> <!-- Icône FontAwesome pour 'Build' -->
+                                            <h4 class="my-3 d-inline">Build</h4>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseBuild" class="accordion-collapse collapse" aria-labelledby="headingBuild" data-bs-parent="#processAccordion">
+                                        <div class="accordion-body rounded-5">
+                                            Outils d'intégration continue (CI) pour compiler votre code source.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Accordion item pour 'Test' -->
+                                <div class="accordion-item shadow mb-3 rounded-3">
+                                    <h2 class="accordion-header" id="headingTest">
+                                        <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTest" aria-expanded="false" aria-controls="collapseTest">
+                                            <i class="fas fa-vial pe-2"></i> <!-- Icône FontAwesome pour 'Test' -->
+                                            <h4 class="my-3 d-inline">Test</h4>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTest" class="accordion-collapse collapse" aria-labelledby="headingTest" data-bs-parent="#processAccordion">
+                                        <div class="accordion-body rounded-5">
+                                            Test continu minimisant ainsi le risque de bugs et de vulnérabilités.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Accordion item pour 'Deploy' -->
+                                <div class="accordion-item shadow mb-3 rounded-3">
+                                    <h2 class="accordion-header" id="headingDeploy">
+                                        <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDeploy" aria-expanded="false" aria-controls="collapseDeploy">
+                                            <i class="fas fa-rocket pe-2"></i> <!-- Icône FontAwesome pour 'Deploy' -->
+                                            <h4 class="my-3 d-inline">Deploy</h4>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseDeploy" class="accordion-collapse collapse" aria-labelledby="headingDeploy" data-bs-parent="#processAccordion">
+                                        <div class="accordion-body rounded-5">
+                                            Déploiement continu de votre application en production.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Accordion item pour 'Monitor' -->
+                                <div class="accordion-item shadow mb-3 rounded-3">
+                                    <h2 class="accordion-header" id="headingMonitor">
+                                        <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMonitor" aria-expanded="false" aria-controls="collapseMonitor">
+                                            <i class="fas fa-heartbeat pe-2"></i> <!-- Icône FontAwesome pour 'Monitor' -->
+                                            <h4 class="my-3 d-inline">Monitor</h4>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseMonitor" class="accordion-collapse collapse" aria-labelledby="headingMonitor" data-bs-parent="#processAccordion">
+                                        <div class="accordion-body rounded-5">
+                                            Surveillance des métriques et des logs de votre application afin de découvrir l'impact sur l'expérience de l'utilisateur.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="container mt-5">
+                <h2 class="text-center section-heading mb-4">Autres thèmes que nous tenons à aborder</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 rounded">
+                            <img src="/assets/img/Cloud_hosting.png" class="card-img-top rounded-top img-fluid" style="height: 200px; object-fit: cover;" alt="Cloud Computing">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Cloud Computing</h5>
+                                <p class="card-text flex-grow-1">Découvrez comment les technologies de cloud peuvent transformer les entreprises en offrant des solutions scalables et flexibles.</p>
+                                <a href="#" class="btn btn-primary mt-auto rounded">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 rounded">
+                            <img src="/assets/img/authentication_namy.png" class="card-img-top rounded-top img-fluid" style="height: 200px; object-fit: cover;" alt="Sécurité des Réseaux">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Sécurité des Réseaux</h5>
+                                <p class="card-text flex-grow-1">Explorez les stratégies avancées pour protéger les infrastructures critiques et sécuriser les données et les réseaux contre les cyberattaques.</p>
+                                <a href="#" class="btn btn-primary mt-auto rounded">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 rounded">
+                            <img src="/assets/img/Settings.png" class="card-img-top rounded-top img-fluid" style="height: 200px; object-fit: cover;" alt="Infrastructure Moderne">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Infrastructure Moderne</h5>
+                                <p class="card-text flex-grow-1">Apprenez les meilleures pratiques pour construire et maintenir des infrastructures modernes, y compris l'automatisation et la gestion des performances.</p>
+                                <a href="#" class="btn btn-primary mt-auto rounded">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <!-- End of page -->
+            <section class="container mt-2" style="opacity: 0.5;">
+                <div class="bg-primary rounded-3 text-white text-center p-4" style="background-color: #6a5acd;">
+                    <h2>Convaincu ? C'est parti ! </h2>
+                    <a href="/cours" class="btn btn-light rounded-2">Je commence les cours</a>
+                </div>
+            </section>
+
+
+
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

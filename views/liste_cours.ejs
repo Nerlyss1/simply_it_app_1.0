@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Cours</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="assets/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/index">Simply'IT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/index">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/cours">Nos Cours</a></li>
+                    <% if (user && user.id) { %>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/profile">Profil</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/connexion">Connexion | Inscription</a></li>
+                    <% } %>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">A Propos</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="masthead" style="background-image: url('/assets/img/purple-yeti-cartoon-sitting-chair.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1 class="post-title mb-4">Listes des cours</h1>
+                    </div>
+                    <div class="card rounded">
+                        <form action="/cours" method="get" class="form-inline">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control rounded" placeholder="Entre un mot clé..." aria-label="Entre un mot clé...">
+                                <select name="categorie" class="form-control">
+                                    <option value="">et-ou une catégorie..</option>
+                                    <option value="Développement">Développement</option>
+                                    <option value="DevOps">DevOps</option>
+                                    <option value="Linux">Linux</option>
+                                    <option value="Réseau">Réseau</option>
+                                    <option value="Virtualisation">Virtualisation</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary rounded" type="submit">Go!</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="container">
+
+        <div class="row">
+            <!-- Side Course-->
+            <div class="col-lg-8">
+                <% if (typeof searchTerm !== 'undefined' && searchTerm || typeof searchCategory !== 'undefined' && searchCategory) { %>
+                    <div class="alert alert-success rounded" role="alert">
+                        Résultats de la recherche <%= searchTerm ? `pour "${searchTerm}"` : "" %> <%= searchCategory ? `dans la catégorie "${searchCategory}"` : "" %> :
+                    </div>
+                <% } %>
+                <% cours.forEach(function(course) { %>
+                <div class="card mb-4 rounded-3">
+                    <!-- <a href="#!"><img class="card-img-top rounded" src="<%= course.image_url %>" alt="..."></a> -->
+                    <div class="card-body">
+                        <div class="small text-muted"><%= course.date %></div>
+                        <h2 class="card-title"><%= course.titre_cours %></h2>
+                        <p class="card-text"><%= course.sous_titre_cours %></p>
+                        <a class="btn btn-primary rounded" href="/cours/<%= course.id_cours %>">Lire l'article →</a>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+
+            <!-- Categories widget-->
+            <div class="card mb-4 rounded-3">
+                <!-- <div class="card-header">
+                    <h3 style="color: #6a5acd;">Catégories</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="/cours?categorie=Développement">Développement</a></li>
+                        <li><a href="/cours?categorie=DevOps">DevOps</a></li>
+                        <li><a href="/cours?categorie=Linux">Linux</a></li>
+                        <li><a href="/cours?categorie=Réseau">Réseau</a></li>
+                        <li><a href="/cours?categorie=Virtualisation">Virtualisation</a></li>
+                    </ul>
+                </div> -->
+            </div>
+            <!-- Side widget-->
+            <% if (!user) { %>
+                <!-- Side widget-->
+                <div class="card mb-4 rounded-3">
+                    <div class="card-header">
+                        <h3 style="color: #6a5acd;">Rejoins-nous !</h3>
+                    </div>
+                    <div class="card-body">
+                        Pour pouvoir commenter et bientôt participer à notre forum !
+                        <a href="/connexion" class="btn btn-primary rounded mt-3">Connexion</a>
+                    </div>
+                </div>
+            <% } %>
+            <div class="card mb-4 rounded-3">
+                <div class="card-header">
+                    <h3 style="color: #6a5acd;">Veille technologique</h3>
+                </div>
+                <div class="card-body">
+                    <h6 class="small text-muted"  style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">Dernières Actualitées intéressantes :</h6> 
+                    <ul class="list-unstyled mb-0">
+                        <li style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                            <span style="color: #FFD700;">&#9733; </span>
+                            <a style="color: #6a5acd;" href="https://www.numerama.com/vroom/1732016-tesla-prevoit-en-2025-des-modeles-plus-abordables-mais-pas-revolutionnaires.html">Tesla prévoit rapidement des modèles plus abordables, mais pas révolutionnaires</a>
+                        </li>
+                        <li style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                            <span style="color: #FFD700;">&#9733; </span>
+                            <a style="color: #6a5acd;" href="https://www.numerama.com/cyberguerre/1726672-lapp-wizz-populaire-chez-les-ados-contient-de-serieuses-failles-de-securite.html">Un hacker s’est infiltré dans Wizz</a>
+                        </li>
+                        <li style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                            <span style="color: #FFD700;">&#9733; </span>
+                            <a style="color: #6a5acd;" href="https://www.numerama.com/cyberguerre/1411382-une-faille-dans-lapplication-de-course-strava-permet-de-trouver-ou-habite-un-utilisateur.html">Une faille dans l’application de course Strava permet de trouver où habite un utilisateur</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Simply'IT 2024</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
